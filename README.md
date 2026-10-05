@@ -1,5 +1,4 @@
-# Terraguard_NER# TerraGuard NER — AI-Based Early Warning and Landslide Risk Monitoring (SIH26001)
-
+# Terraguard_NER# TerraGuard NER — AI-Based Early Warning and Landslide Risk Monitoring
 An MVP for landslide risk monitoring in India's North Eastern Region:
 **Predict → Detect → Assess Impact → Explain → Find Safe Route → Report → Warn.**
 
