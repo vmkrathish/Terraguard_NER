@@ -1,0 +1,39 @@
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.4
+pydantic-settings==2.7.0
+python-jose[cryptography]==3.3.0
+bcrypt==4.2.1
+python-multipart==0.0.20
+python-dotenv==1.0.1
+pandas==2.2.3
+openpyxl==3.1.5
+numpy==1.26.4
+scikit-learn==1.5.2
+xgboost==2.1.3
+shap==0.46.0
+joblib==1.4.2
+networkx==3.4.2
+Pillow==11.0.0
+httpx==0.28.1
+pytest==8.3.4
+pytest-cov==6.0.0
+
+# --- Data layer: an Excel workbook (dataset/) is the single source of truth
+# for all application data — no database/ORM/PostGIS/pgvector. `filelock`
+# guards atomic, concurrency-safe writes to dataset/terraguard_data.xlsx;
+# `shapely` backs the spatial (point-to-road-line distance) helpers in
+# app/services/geo_utils.py — point/point distance uses plain haversine.
+filelock==3.16.1
+shapely==2.0.6
+
+# --- Semantic embeddings (BAAI/bge-m3) + PDF ingestion ---
+# CPU-only is fine — no GPU required. First run downloads the bge-m3 model
+# weights (~2.3GB, public, no Hugging Face token needed), then works offline.
+# torch must stay >=2.6 — newer transformers/sentence-transformers releases
+# refuse to torch.load model weights on torch<2.6 (CVE-2025-32434 guard),
+# and silently fall back to a low-quality keyword-overlap embedding instead
+# of real bge-m3 semantic search. Do not downgrade this pin.
+torch==2.6.0
+sentence-transformers==3.3.1
+pypdf==5.1.0
